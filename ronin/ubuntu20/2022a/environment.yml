@@ -1,4 +1,4 @@
-Rname: mit-ronin-conda-2022a
+name: mit-ronin-conda-2022a
 channels:
   - conda-forge
   - anaconda
