@@ -10,7 +10,7 @@
 #   echo "chmod +x "${SCRIPT_NAME} | ssh -T -A -i ~/Downloads/.ssh/.ec2/aws-usw2-key2021  -l ubuntu ${IP_ADDRESS}
 #   ssh -t -A -i ~/Downloads/.ssh/.ec2/aws-usw2-key2021  -l ubuntu ${IP_ADDRESS} sudo bash -c "./${SCRIPT_NAME}"
 
-. ./get_instance_parms.sh 
+. /home/ubuntu/get_instance_parms.sh 
 
 
 DNS_ZONE=${az}.researchcomputing.cloud
