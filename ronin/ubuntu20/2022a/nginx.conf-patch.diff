@@ -1,0 +1,11 @@
+--- nginx.conf.s00	2022-03-10 02:54:13.426886026 +0000
++++ nginx.conf	2022-03-10 02:49:14.614249911 +0000
+@@ -21,7 +21,7 @@
+ 	types_hash_max_size 2048;
+ 	# server_tokens off;
+ 
+-	# server_names_hash_bucket_size 64;
++	server_names_hash_bucket_size 128;
+ 	# server_name_in_redirect off;
+ 
+ 	include /etc/nginx/mime.types;
