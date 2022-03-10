@@ -27,11 +27,13 @@ server {
     listen 443 ssl;
     ssl_certificate /etc/nginx/ssl/nginx.crt;
     ssl_certificate_key /etc/nginx/ssl/nginx.key;
+    
+    index index.html;
 
         location / {
                 # First attempt to serve request as file, then
                 # as directory, then fall back to displaying a 404.
-                try_files '$uri' '$uri/' =404;
+                try_files \$uri \$uri/ =404;
         }
 
         # pass PHP scripts to FastCGI server
