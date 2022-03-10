@@ -20,11 +20,11 @@ IFS=","
 for host in $HTTPS_SERVER_NAMES; do
 
  SERVER_HTTPS_NAME=${host}
- # certbot --nginx --noninteractive --agree-tos --cert-name ${SERVER_HTTPS_NAME}.${DNS_ZONE} -d ${SERVER_HTTPS_NAME}.${DNS_ZONE}  --register-unsafely-without-email --nginx --redirect
+ certbot --nginx --noninteractive --agree-tos --cert-name ${SERVER_HTTPS_NAME}.${DNS_ZONE} -d ${SERVER_HTTPS_NAME}.${DNS_ZONE}  --register-unsafely-without-email --nginx --redirect
  ## force renew case below (use after test)
  # certbot --force-renew --nginx --noninteractive --agree-tos --cert-name ${SERVER_HTTPS_NAME}.${DNS_ZONE} -d ${SERVER_HTTPS_NAME}.${DNS_ZONE}  --register-unsafely-without-email --nginx --redirect
  ## test case below use for checking things work without hitting rate limits
- certbot --test-cert --nginx --noninteractive --agree-tos --cert-name ${SERVER_HTTPS_NAME}.${DNS_ZONE} -d ${SERVER_HTTPS_NAME}.${DNS_ZONE}  --register-unsafely-without-email --nginx --redirect
+ # certbot --test-cert --nginx --noninteractive --agree-tos --cert-name ${SERVER_HTTPS_NAME}.${DNS_ZONE} -d ${SERVER_HTTPS_NAME}.${DNS_ZONE}  --register-unsafely-without-email --nginx --redirect
 
 done
 
