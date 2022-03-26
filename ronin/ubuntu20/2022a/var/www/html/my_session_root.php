@@ -15,6 +15,9 @@ if ( !isset($_SESSION['MY_PHP_AUTH_USER']) ) {
 	if ( !array_key_exists('RAND_STR_24',$_SESSION) ) {
           $_SESSION['RAND_STR_24']=bin2hex(random_bytes(24));
 	}
+        $fl = shell_exec('sudo -g sudo /bin/ls');
+	echo '</br>';
+	echo $fl;
 	echo '</br>';
         echo 'Jupyter ' . '<A href=/start_or_attach_to_jupyter_session.php>' . 'http://localhost/jupyter/' . $_SESSION['RAND_STR_24'] . '</A>';
 }
