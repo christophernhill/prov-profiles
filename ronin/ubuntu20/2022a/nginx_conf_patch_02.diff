@@ -1,0 +1,23 @@
+--- default.00	2022-03-28 21:04:56.725046378 +0000
++++ default	2022-03-28 21:22:17.388425501 +0000
+@@ -68,6 +68,22 @@
+ 	#location ~ /\.ht {
+ 	#	deny all;
+ 	#}
++	
++	#
++        location /private/ {
++          auth_request /auth;
++          try_files $uri $uri/ /auth_index.php?$args;
++        }
++
++        location = /auth {
++          internal;
++          proxy_pass  http://auth.localhost;
++          proxy_pass_request_body off;
++          proxy_set_header Content-Length "";
++          proxy_set_header X-Original-URI $request_uri;
++        }
++
++
+ }
