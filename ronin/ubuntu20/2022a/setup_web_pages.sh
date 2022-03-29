@@ -14,5 +14,36 @@ cat >> /etc/hosts <<!
 127.0.0.1 auth.localhost
 !
 
+cat >> /etc/nginx/sites-available/default <<'EOFA'
+
+server {
+    server_name auth.localhost;
+    root /var/www/html/;
+
+    access_log /var/log/nginx/auth.localhost.access.log;
+    error_log /var/log/nginx/auth.localhost.error.log;
+
+    index auth_index.php;
+
+        location / {
+          try_files $uri $uri/ /auth_index.php?$args;
+        }
+
+
+        # pass PHP scripts to FastCGI server
+        #
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+        #
+        #       # With php-fpm (or other unix sockets):
+                fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+        #       # With php-cgi (or other tcp sockets):
+        #       fastcgi_pass 127.0.0.1:9000;
+        }
+
+}
+
+EOFA
+
 usermod -a -G sudo www-data
 systemctl restart nginx
