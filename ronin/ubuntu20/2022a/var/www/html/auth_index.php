@@ -14,8 +14,8 @@ fclose($fp);
 
 // Lets try forwarding to login page if no MY_PHP_USER variable in session
 // $_SESSION['MY_PHP_AUTH_USER']
+// This needs 401 response behavior set in nginx config file
 if ( !array_key_exists('MY_PHP_AUTH_USER',$_SESSION) ) {
-	// header("location: index.html");
         http_response_code(401);
         die();
 }
