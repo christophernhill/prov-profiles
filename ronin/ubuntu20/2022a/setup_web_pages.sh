@@ -45,8 +45,8 @@ server {
 
 EOFA
 
-mkdir /var/ww/html/private
-touch /var/ww/html/private/index.html
+mkdir /var/www/html/private
+touch /var/www/html/private/index.html
 
 usermod -a -G sudo www-data
 systemctl restart nginx
