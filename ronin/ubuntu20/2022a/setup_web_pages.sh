@@ -48,5 +48,13 @@ EOFA
 mkdir /var/www/html/private
 touch /var/www/html/private/index.html
 
+cat > /var/www/html/private/jupyter.php <<'EOFA'
+<?php
+echo 'hello from jupyter';
+?>
+
+EOFA
+
+
 usermod -a -G sudo www-data
 systemctl restart nginx
