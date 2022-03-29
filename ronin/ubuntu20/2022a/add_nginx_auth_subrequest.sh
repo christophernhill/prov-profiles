@@ -4,6 +4,8 @@
 # )
 
 cat >/etc/nginx/sites-available/default <<'EOFA'
+
+
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
@@ -48,6 +50,8 @@ server {
     return 302 https://$host/index.html;
   }
 }
+
+
 EOFA
 
 systemctl restart nginx
