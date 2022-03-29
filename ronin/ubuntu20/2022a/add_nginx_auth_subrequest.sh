@@ -14,9 +14,9 @@ server {
 	server_name _;
 
   # These are pre-auth, so need to skip auth.
-	location / {
-		try_files $uri $uri/ =404;
-	}
+  location / {
+     try_files $uri $uri/ =404;
+  }
   location = /index2.php {
 		include snippets/fastcgi-php.conf;
 		fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
