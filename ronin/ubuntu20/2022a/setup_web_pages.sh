@@ -55,6 +55,14 @@ echo 'hello from jupyter';
 
 EOFA
 
+cat > /var/www/html/private/desktop.php <<'EOFA'
+<?php
+echo 'hello from desktop';
+?>
+
+EOFA
+
+
 
 usermod -a -G sudo www-data
 systemctl restart nginx
