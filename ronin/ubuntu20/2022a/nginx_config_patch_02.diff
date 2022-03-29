@@ -1,6 +1,6 @@
 --- default.00	2022-03-28 21:04:56.725046378 +0000
 +++ default	2022-03-28 21:22:17.388425501 +0000
-@@ -68,6 +68,22 @@
+@@ -68,6 +68,27 @@
  	#location ~ /\.ht {
  	#	deny all;
  	#}
@@ -19,5 +19,10 @@
 +          proxy_set_header X-Original-URI $request_uri;
 +        }
 +
++
++       error_page 401 = @login;
++       location @login {
++         return 302 https://$host/index.html;
++       }
 +
  }
