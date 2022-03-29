@@ -27,11 +27,11 @@ server {
   }
 
   # Below here will go through auth/
-	location ~ \.php$ {
+  location ~ \.php$ {
     auth_request /auth;
-		include snippets/fastcgi-php.conf;
+    include snippets/fastcgi-php.conf;
     fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
-	}
+  }
   location /private {
     auth_request /auth;
     try_files $uri $uri/ /auth_index.php?$args;
