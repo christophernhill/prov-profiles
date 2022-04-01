@@ -69,5 +69,26 @@ apt install -y apache2
   cd /home/ubuntu/prov-profiles/ronin/ubuntu20/2022a;
   cp  apache2_lua/* /home/ubuntu/apache2_lua
 )
+
+( cd /etc/apache2/mods-enabled/
+  ln -s ../mods-available/lua.load . 
+  ln -s ../mods-available/proxy.load . 
+  ln -s ../mods-available/proxy_wstunnel.load . 
+  ln -s ../mods-available/proxy_uwsgi.load . 
+  ln -s ../mods-available/proxy_scgi.load . 
+  ln -s ../mods-available/proxy_http2.load . 
+  ln -s ../mods-available/proxy_http.load . 
+  ln -s ../mods-available/proxy_html.load . 
+  ln -s ../mods-available/proxy_hcheck.load . 
+  ln -s ../mods-available/proxy_ftp.load . 
+  ln -s ../mods-available/proxy_fdpass.load . 
+  ln -s ../mods-available/proxy_fcgi.load . 
+  ln -s ../mods-available/proxy_express.load . 
+  ln -s ../mods-available/proxy_connect.load . 
+  ln -s ../mods-available/proxy_balancer.load . 
+  ln -s ../mods-available/proxy_ajp.load . 
+  ln -s ../mods-available/xml2enc.load . 
+  ln -s ../mods-available/slotmem_shm.load . 
+)_
 # Restart
 systemctl restart apache2
