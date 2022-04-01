@@ -64,5 +64,10 @@ systemctl restart nginx
 apt install apache2
 # Fix up config
 ( cd /home/ubuntu/prov-profiles/ronin/ubuntu20/2022a; cp etc/apache2/ports.conf /etc/apache2/ports.conf )
+( cd /home/ubuntu ;
+  mkdir apache2_lua ;
+  cd /home/ubuntu/prov-profiles/ronin/ubuntu20/2022a;
+  cp  apache2_lua/* /home/ubuntu/apache2_lua
+)
 # Restart
 systemctl restart apache2
