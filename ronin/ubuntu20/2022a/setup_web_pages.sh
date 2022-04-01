@@ -61,7 +61,7 @@ usermod -a -G sudo www-data
 systemctl restart nginx
 
 # Add apache on a different port for dynamic proxy via lua
-apt install apache2
+apt install -y apache2
 # Fix up config
 ( cd /home/ubuntu/prov-profiles/ronin/ubuntu20/2022a; cp etc/apache2/ports.conf /etc/apache2/ports.conf )
 ( cd /home/ubuntu ;
