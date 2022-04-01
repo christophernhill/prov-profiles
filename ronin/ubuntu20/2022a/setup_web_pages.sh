@@ -59,3 +59,8 @@ EOFA
 
 usermod -a -G sudo www-data
 systemctl restart nginx
+
+# Add apache on a different port for dynamic proxy via lua
+apt install apache2
+# Fix up config
+# Restart
