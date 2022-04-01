@@ -89,6 +89,6 @@ apt install -y apache2
   ln -s ../mods-available/proxy_ajp.load . 
   ln -s ../mods-available/xml2enc.load . 
   ln -s ../mods-available/slotmem_shm.load . 
-)_
+)
 # Restart
 systemctl restart apache2
