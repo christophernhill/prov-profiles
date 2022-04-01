@@ -91,8 +91,10 @@ apt install -y apache2
   ln -s ../mods-available/slotmem_shm.load . 
 )
 
-cp prov-profiles/ronin/ubuntu20/2022a/etc/apache/apache2.conf /etc/apache2/
-cp prov-profiles/ronin/ubuntu20/2022a/etc/apache/sites-enabled/000-default.conf /etc/apache2/sites-available/
+( cd /home/ubuntu
+  cp prov-profiles/ronin/ubuntu20/2022a/etc/apache/apache2.conf /etc/apache2/
+  cp prov-profiles/ronin/ubuntu20/2022a/etc/apache/sites-enabled/000-default.conf /etc/apache2/sites-available/
+)
 
 # Restart
 systemctl restart apache2
