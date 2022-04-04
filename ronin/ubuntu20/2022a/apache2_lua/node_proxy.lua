@@ -17,8 +17,8 @@ function node_proxy_handler(r)
   -- read in <LocationMatch> regular expression captures
   --CNH local host = r.subprocess_env['MATCH_HOST']
   local port = r.subprocess_env['MATCH_PORT']
-  --CNH local uri  = r.subprocess_env['MATCH_URI']
-  local uri = "/"
+  local uri  = "/jupyter/port_" .. port .. r.subprocess_env['MATCH_URI']
+  --CNH local uri = "/"
 
   -- get the system-level user name
   --CNH local user = user_map.map(r, user_map_cmd, user_env and r.subprocess_env[user_env] or r.user)
