@@ -49,6 +49,26 @@ server {
   location @login {
     return 302 https://$host/index.html;
   }
+  
+  location = /jupyter {
+    rewrite ^/(.*)$ $1/ permanent;
+  }
+
+  location   /jupyter/ {
+    auth_request /auth;
+    proxy_pass http://localhost:800;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    # websocket proxy
+    proxy_http_version 1.1;
+    proxy_redirect off;
+    proxy_buffering off;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_read_timeout 86400;
+  }
+
 }
 
 
