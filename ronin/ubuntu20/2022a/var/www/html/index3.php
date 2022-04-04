@@ -63,6 +63,8 @@ $ueppn_match=in_array($ueppn,$auth_eppn_list,true);
 if ( $ueppn_match ) {
 	print("Yayyy: \"" . $ueppn . "\" you are authorized!"); print "</br>";
 	$_SESSION['MY_PHP_AUTH_USER'] = $ueppn;
+	echo "</br>";
+        echo "<A href=jupyter.php>jupyter lab/</A>";
 } else {
 	print("Error: \"" . $ueppn . "\" not in authorized list");print "</br>";
 }
