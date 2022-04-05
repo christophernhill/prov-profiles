@@ -65,6 +65,8 @@ if ( $ueppn_match ) {
 	$_SESSION['MY_PHP_AUTH_USER'] = $ueppn;
 	echo "</br>";
         echo "<A href=jupyter.php>jupyter lab/</A>";
+	echo "<br>";
+	echo "<A href=/novnc/vnc.html>vnc</A>";
 } else {
 	print("Error: \"" . $ueppn . "\" not in authorized list");print "</br>";
 }
