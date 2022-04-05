@@ -1,0 +1,5 @@
+source ../credentials 
+source ../settings 
+terraform init
+terraform plan -out plan.tfp
+terraform apply plan.tfp
