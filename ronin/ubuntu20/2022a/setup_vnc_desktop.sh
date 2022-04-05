@@ -12,3 +12,23 @@ chown -R ubuntu:ubuntu /home/ubuntu/.vnc/
 su -l ubuntu /bin/bash -c "vncserver -localhost yes -geometry 1024x768 -SecurityTypes None  :0"
 /usr/bin/websockify  -D --verbose    --web /usr/share/novnc/     6080     localhost:5900 --log-file=/var/log/websockify
 apt install -y xterm
+
+# Fix silly terminal problem
+cat > /home/ubuntu/.config/xfce4/panel/launcher-17/*.desktop <<'EOFA'
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=dbus-launch gnome-terminal
+# Exec=xeyes
+Icon=utilities-terminal
+StartupNotify=true
+Terminal=false
+Categories=Utility;X-XFCE;X-Xfce-Toplevel;
+OnlyShowIn=XFCE;
+X-AppStream-Ignore=True
+Name=Terminal Emulator
+Comment=Use the command line
+X-XFCE-Source=file:///usr/share/applications/exo-terminal-emulator.desktop
+Path=
+EOFA
+chown ubuntu:ubuntu /home/ubuntu/.config/xfce4/panel/launcher-17/*.desktop
