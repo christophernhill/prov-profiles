@@ -1,0 +1,53 @@
+export AWS_DEFAULT_REGION
+export AWS_DEFAULT_REGION
+export AWS_VPC_NAME
+export AWS_SUBNET_NAME
+export AWS_PRIV_SUBNET_NAME
+export AWS_EC2_PG_NAME
+export AWS_BILL_ACCT
+export AWS_JLAB_AMI
+export AWS_JLAB_AMI
+export AWS_JLAB_AMI
+export AWS_JLAB_ITYPE
+export AWS_JLAB_ITYPE
+export AWS_DSCHED_ITYPE
+export AWS_SSHGW_ITYPE
+export AWS_SSHGW_ITYPE
+export AWS_SSHGW_ITYPE
+export AWS_SSH_KEY_NAME
+export AWS_SSH_KEY_NAME
+# export AWS_DASK_WORKERS_COUNT
+# export AWS_DASK_WORKERS_COUNT
+export AWS_DASK_WORKERS_COUNT
+# export AWS_DASK_WORKERS_COUNT
+
+# export AWS_DEFAULT_REGION
+# export AWS_SSH_KEY_NAME
+
+# export AWS_DEFAULT_REGION
+# export AWS_SSH_KEY_NAME
+
+export AWS_DEFAULT_REGION
+export AWS_SSH_KEY_NAME
+
+#
+#AWS authentication variables
+export TF_VAR_aws_access_key
+export TF_VAR_aws_secret_key
+
+# Other variables
+export TF_VAR_aws_region
+export TF_VAR_AWS_VPC_NAME
+export TF_VAR_AWS_SUBNET_NAME
+export TF_VAR_AWS_PRIV_SUBNET_NAME
+export TF_VAR_AWS_PG_NAME
+
+export TF_VAR_AWS_JLAB_AMI
+export TF_VAR_AWS_JLAB_ITYPE
+
+export TF_VAR_AWS_SSH_KEY_NAME
+
+export TF_VAR_AWS_DSCHED_ITYPE
+export TF_VAR_AWS_DWORKERS_COUNT
+
+export TF_VAR_AWS_SSHGW_ITYPE
