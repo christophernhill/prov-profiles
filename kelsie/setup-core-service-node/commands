@@ -1,4 +1,4 @@
-sudo apt install jq awscli
+sudo apt install -y jq awscli
 iid=`curl http://169.254.169.254/latest/meta-data/instance-id`
 source setup # set environment variables, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION
 
@@ -30,3 +30,50 @@ aws ec2 modify-instance-attribute --instance-id ${iid} --groups $sgid0 $sgid
 
 # Just for fun read user data
 aws ec2 describe-instance-attribute --instance-id $iid --attribute userData | grep Value | awk '{print $2}' | tr -d '"' | base64 -d
+
+# Now enable apache and php so internal machines can request actions on their behalf
+sudo apt-get install apache2
+sudo apt install php libapache2-mod-php 
+cat > info.php <<EOFA
+<?php
+phpinfo();
+EOFA
+sudo cp info.php /var/www/html/
+
+cat > add-http-https-access.php <<'EOFA'
+<?php
+print 'Adding http and https ingress access for ';
+print $_SERVER['REMOTE_ADDR'];
+echo "\n";
+$old_path=getcwd();
+chdir('/home/ubuntu');
+$output=shell_exec('./aws-ronin-add-http-https-to-instance.sh ' . $_SERVER['REMOTE_ADDR']);
+print $output;
+echo "\n";
+chdir($old_path);
+?>
+EOFA
+sudo cp add-http-https-access.php /var/www/html/
+
+cat > aws-ronin-add-http-https-to-instance.sh <<'EOFA'
+#!/bin/bash
+source setup
+echo hi $1
+ipaddr=$1
+
+# Get instance id and its current security groups
+iid=`aws ec2 describe-instances --filters Name=network-interface.addresses.private-ip-address,Values=${ipaddr} | grep InstanceId | awk '{print $2}' | tr -d '",'`
+echo "Modifying instance id: "$iid
+
+sgid0=`aws ec2 describe-instances --filters Name=network-interface.addresses.private-ip-address,Values=${ipaddr} | grep GroupId | awk '{print $2}' | sort | uniq | tr -d '",' | tr "\n" "," | sed s'/,$//' | tr "," " "`
+echo "Current security groups: "$sgid0
+
+# Get id for http and https public ingress security groups
+# these have standard names ronin-http and ronin-https
+aws ec2 describe-security-groups --filters Name=group-name,Values=ronin-http | grep GroupId
+newgid1=`aws ec2 describe-security-groups --filters Name=group-name,Values=ronin-http  | grep GroupId | awk '{print $2}' | tr -d '",'`
+newgid2=`aws ec2 describe-security-groups --filters Name=group-name,Values=ronin-https | grep GroupId | awk '{print $2}' | tr -d '",'`
+
+aws ec2 modify-instance-attribute --instance-id ${iid} --groups ${sgid0} ${newgid1} ${newgid2}
+EOFA
+chmod +x aws-ronin-add-http-https-to-instance.sh
