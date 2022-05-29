@@ -1,3 +1,33 @@
+#
+# Commands to set up a RONIN service machine running apache that can add http and https 
+# security group full ingress access to another RONIN machine. A RONIN machine can
+# request ingress be added by issuing a request
+# 
+# $ curl http://IP-ADDRESS/add-http-https-access.php
+#
+# where IP-ADDRESS is the address of the service machine.
+#
+#
+#
+# ===================================================
+# To use these commands to set up the service machine
+# ===================================================
+#
+# 1. install a script called setup in the ubuntu home directory which holds
+# export AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXXXXXXXXXXX
+# export AWS_SECRET_ACCESS_KEY=YYYYYYYYYYYYYYYYYYYYYYYYYY
+# export AWS_DEFAULT_REGION=RRRRRRRRR
+#
+# where XXXXXXXX is a key for RONIN admin, YYYYYY is a secret key for RONIN admin and
+# RRRRR is the region whereh RONIN is creating machines.
+#
+# 2. download the commands from github
+# $ curl https://raw.githubusercontent.com/christophernhill/prov-profiles/main/kelsie/setup-core-service-node/commands > commands
+#
+# 3. run the commands
+# $ source commands
+#
+#
 sudo apt install -y jq awscli
 iid=`curl http://169.254.169.254/latest/meta-data/instance-id`
 source setup # set environment variables, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION
