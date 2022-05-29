@@ -33,8 +33,8 @@ aws ec2 modify-instance-attribute --instance-id ${iid} --groups $sgid0 $sgid
 aws ec2 describe-instance-attribute --instance-id $iid --attribute userData | grep Value | awk '{print $2}' | tr -d '"' | base64 -d
 
 # Now enable apache and php so internal machines can request actions on their behalf
-sudo apt-get install apache2
-sudo apt install php libapache2-mod-php 
+sudo apt-get install -y apache2
+sudo apt install -y php libapache2-mod-php 
 cat > info.php <<EOFA
 <?php
 phpinfo();
