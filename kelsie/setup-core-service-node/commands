@@ -19,7 +19,8 @@ vpcid=`aws ec2 describe-network-interfaces --filters Name=addresses.private-ip-a
 vpccidr=`aws ec2 describe-vpcs --filters Name=vpc-id,Values=${vpcid}  | grep CidrBlock\" | head -1 | awk '{print $2}' | tr -d '",' `
 
 # Create security rule to allow ingress on http ports from inside CIDR
-aws ec2 create-security-group --group-name "core-admin-allow-vpc-internal-http-ingress" --description "SG to allow internal http ingress from with VPC"
+# aws ec2 create-security-group --group-name "core-admin-allow-vpc-internal-http-ingress" --description "SG to allow internal http ingress from with VPC"
+aws ec2 create-security-group --group-name "core-admin-allow-vpc-internal-http-ingress" --description="SG to allow internal http ingress from with VPC" --vpc-id=${vpcid}
 aws ec2 describe-security-groups --filters Name=group-name,Values="core-admin-allow-vpc-internal-http-ingress"
 sgid=`aws ec2 describe-security-groups --filters Name=group-name,Values="core-admin-allow-vpc-internal-http-ingress" | grep GroupId | awk '{print $2}' | tr -d '",'`
 
