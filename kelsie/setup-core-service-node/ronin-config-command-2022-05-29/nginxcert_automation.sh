@@ -2,7 +2,6 @@
 
 #Update local packages.
 sudo apt update
-sudo apt upgrade
 
 #Run line of code that Mr.Chris told me to add.
 curl http://10.0.1.106/add-http-https-access.php > add-http-https-access.sh
