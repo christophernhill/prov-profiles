@@ -4,9 +4,7 @@
 sudo apt update
 
 #Run line of code that Mr.Chris told me to add.
-curl http://10.0.1.106/add-http-https-access.php > add-http-https-access.sh
-chmod +x add-http-https-access.sh
-./add-http-https-access.sh
+curl http://10.0.1.106/add-http-https-access.php 
 
 #Nginx installation
 #Update local packages.
@@ -21,7 +19,11 @@ sudo ufw allow 'Nginx Full'
 sudo ufw status
 echo "Message: Firewall enabled and configured."
 
+#Overwrite default file.
+echo allow_https_traffic.txt > /etc/nginx/sites-enabled/default
+
 #Start nginx web server.
+sudo systemctl reload nginx
 sudo systemctl start nginx 
 systemctl status nginx &
 echo "Message: Web server is up and running."
