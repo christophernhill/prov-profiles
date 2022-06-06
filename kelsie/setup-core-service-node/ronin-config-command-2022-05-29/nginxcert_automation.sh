@@ -1,11 +1,16 @@
 #!/bin/bash
+
+#Update local packages.
+sudo apt update
+sudo apt upgrade
+
+#Run line of code that Mr.Chris told me to add.
 curl http://10.0.1.106/add-http-https-access.php > add-http-https-access.sh
 chmod +x add-http-https-access.sh
 ./add-http-https-access.sh
 
 #Nginx installation
-#Update local packages and install nginx.
-sudo apt update
+#Update local packages.
 sudo apt install nginx
 echo "System updated and nginx installed."
 
