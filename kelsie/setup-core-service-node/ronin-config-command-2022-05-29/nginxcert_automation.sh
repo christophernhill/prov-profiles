@@ -12,6 +12,7 @@ chmod +x add-http-https-access.sh
 #Nginx installation
 #Update local packages.
 sudo apt install nginx
+nginx -v
 echo "System updated and nginx installed."
 
 #Enable ufw.
@@ -22,7 +23,7 @@ sudo ufw status
 echo "Firewall enabled and configured."
 
 #Start nginx web server.
-sudo systemctl reload nginx 
+sudo systemctl start nginx 
 systemctl status nginx &
 echo "Web server is up and running."
 
