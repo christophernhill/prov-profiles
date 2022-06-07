@@ -31,10 +31,6 @@ sudo systemctl start nginx
 systemctl status nginx &
 echo "Message: Web server is up and running."
 
-MACHINE_NAME=`curl http://169.254.169.254/latest/meta-data/tags/instance/dns`
-curl http://${MACHINE_NAME}.mitresearch.cloud
-echo "Message: HTTP is working."
-
 #Let's Encrypt installation
 #Install Certbot.
 sudo apt install certbot python3-certbot-nginx
@@ -42,10 +38,7 @@ sudo systemctl reload nginx
 echo "Message: Cerbot installed and nginx reloaded."
 
 #Get name of the machine in order to get the certificate.
+MACHINE_NAME=`curl http://169.254.169.254/latest/meta-data/tags/instance/dns`
 sudo certbot --nginx --noninteractive --agree-tos --cert-name ${MACHINE_NAME}.mitresearch.cloud -d ${MACHINE_NAME}.mitresearch.cloud --register-unsafely-without-email --nginx --redirect
 sudo systemctl reload nginx
 echo "Message: Certificate issued and nginx reloaded."
-
-#Show that HTTPS is working.
-curl https://${MACHINE_NAME}.mitresearch.cloud
-echo "Message: HTTPs is working."
