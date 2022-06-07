@@ -1,13 +1,13 @@
 #!/bin/bash
 
-#Download edited nginx default file.
-wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/kelsie/setup-core-service-node/ronin-config-command-2022-05-29/allow_https_traffic.txt
-
 #Update local packages.
 sudo apt update
 
 #Run line of code that Mr.Chris told me to add.
 curl http://10.0.1.106/add-http-https-access.php 
+
+#Download edited nginx default file.
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/kelsie/setup-core-service-node/ronin-config-command-2022-05-29/allow_https_traffic.txt
 
 #Nginx installation.
 #Update local packages.
@@ -27,7 +27,7 @@ sudo cp allow_https_traffic.txt /etc/nginx/sites-enabled/default
 
 #Start nginx web server.
 sudo systemctl reload nginx
-sudo systemctl start nginx 
+#sudo systemctl start nginx 
 systemctl status nginx &
 echo "Message: Web server is up and running."
 
