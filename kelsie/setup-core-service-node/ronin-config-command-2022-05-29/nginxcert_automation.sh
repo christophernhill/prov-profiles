@@ -5,6 +5,8 @@ curl http://10.0.1.106/add-http-https-access.php
 #Update local packages.
 sudo apt update
 
+#Install PHP
+
 #Nginx installation.
 #Update local packages.
 echo y | sudo apt install nginx
