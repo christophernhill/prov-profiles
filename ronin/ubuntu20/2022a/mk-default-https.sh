@@ -16,7 +16,7 @@
 mkdir /etc/nginx/ssl/
 openssl req -x509 -batch -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
 
-cat >/etc/nginx/sites-available/default-https <<EOFA
+cat >/etc/nginx/sites-available/default-https-base <<EOFA
 server {
     server_name _;
     root /var/www/html/;
@@ -50,6 +50,6 @@ server {
 }
 EOFA
 
-ln -s /etc/nginx/sites-available/default-https /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/default-https-base /etc/nginx/sites-enabled/
 
 systemctl reload nginx
