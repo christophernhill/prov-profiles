@@ -121,7 +121,7 @@ fi
 curl https://${MACHINE_NAME}.mitresearch.cloud
 
 #Add stage 0 index and .php
-echo y | sudo apt install php7.4
+#echo y | sudo apt install php7.4
 echo y | sudo apt install php7.4-fpm
 echo y | sudo apt install php7.4-cli
 echo y | sudo apt install php7.4-mysql
