@@ -18,8 +18,7 @@ if [ ! -d /etc/nginx/ssl/ ]; then
 sudo mkdir /etc/nginx/ssl/
 sudo openssl req -x509 -batch -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
 (
-sudo cat <<EOFA
-
+sudo cat <<'EOFA'
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
@@ -71,7 +70,6 @@ server {
 	#	deny all;
 	#}
 }
-
 EOFA
 ) | sudo tee /etc/nginx/sites-available/default-http > /dev/null
 
