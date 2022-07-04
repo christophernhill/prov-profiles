@@ -145,6 +145,20 @@ sudo cat <<'EOFA'
 EOFA
 ) | sudo tee /var/www/html/test_php.php > /dev/null
 
+#Add test php login page
+(
+sudo cat <<'EOFA'
+<html>
+ <head>
+  <title>PHP Login Test</title>
+ </head>
+ <body>
+ <?php echo '<p>Hello World from PHP login test</p>'; ?> 
+ </body>
+</html>
+EOFA
+) | sudo tee /var/www/html/test_login.php > /dev/null
+
 
 
 
