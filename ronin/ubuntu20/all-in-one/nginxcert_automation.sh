@@ -130,3 +130,22 @@ echo y | sudo apt install php7.4-curl
 echo y | sudo apt install awscli
 echo y | sudo apt install jq
 
+
+#Add test php page
+(
+sudo cat <<'EOFA'
+<html>
+ <head>
+  <title>PHP Test</title>
+ </head>
+ <body>
+ <?php echo '<p>Hello World from PHP</p>'; ?> 
+ </body>
+</html>
+EOFA
+) | sudo tee /var/www/html/test_php.php > /dev/null
+
+
+
+
+
