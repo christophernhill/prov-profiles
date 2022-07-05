@@ -177,6 +177,7 @@ sudo cp index3.php.template /var/www/html/index3.php
 sudo mkdir -p /home/root
 echo $MACHINE_USER | sudo tee /home/root/auth_eppn_ids.txt
 
+#Add conda and jupyterlab base (some to be replaced by modules)
 if [ ! -d /home/ubuntu/miniconda3 ]; then
   \rm -fr Miniconda3-py39_4.10.3-Linux-x86_64.sh miniconda3
   \rm -fr environment.yml
