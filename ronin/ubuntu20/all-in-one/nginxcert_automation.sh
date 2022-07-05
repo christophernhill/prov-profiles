@@ -161,7 +161,7 @@ sudo cat <<'EOFA'
 EOFA
 ) | sudo tee /var/www/html/test_login.php > /dev/null
 
-#Make login page
+#Make login setup
 \rm fwd2login.php.template
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/fwd2login.php.template
 cat fwd2login.php.template | sed s'/XXXXREPLACE_WITH_MACHINE_URI_HEREXXXX/'${MACHINE_NAME}.${MACHINE_DOMAIN}'/' | sudo tee /var/www/html/fwd2login.php
@@ -173,4 +173,6 @@ sudo cp login.php.template /var/www/html/login.php
 \rm index3.php.template
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/index3.php.template
 sudo cp index3.php.template /var/www/html/index3.php
+
+echo $MACHINE_USER | sudo tee /home/root/auth_eppn_ids.txt
 
