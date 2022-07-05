@@ -174,5 +174,6 @@ sudo cp login.php.template /var/www/html/login.php
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/index3.php.template
 sudo cp index3.php.template /var/www/html/index3.php
 
+sudo mkdir -p /home/root
 echo $MACHINE_USER | sudo tee /home/root/auth_eppn_ids.txt
 
