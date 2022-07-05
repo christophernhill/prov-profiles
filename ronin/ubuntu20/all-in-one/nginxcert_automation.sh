@@ -198,6 +198,12 @@ chmod +x get_free_port.sh
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/start_jupyter.sh
 chmod +x start_jupyter.sh
 
+mkdir -p /home/ubuntu/.jupyter/
+(
+. /home/ubuntu/miniconda3/bin/activate mit-ronin-conda-2022a
+env | grep -e '^CONDA_EXE' -e '^CONDA_PREFIX' -e '^CONDA_PROMPT_MODIFIER' -e '^PROJ_LIB' -e '^CONDA_PYTHON_EXE' -e '^CONDA_DEFAULT_ENV' -e '^PATH' > /home/ubuntu/.jupyter/env
+)
+
 (
 cat <<'EOFA'
        # service name:     jupyter-lab.service 
