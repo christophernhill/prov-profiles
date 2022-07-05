@@ -102,6 +102,7 @@ sudo systemctl start nginx
 
 #Get and store machine name.
 MACHINE_NAME=`curl http://169.254.169.254/latest/meta-data/tags/instance/dns`
+MACHINE_DOMAIN="mitresearch.cloud"
 
 #Let's Encrypt installation
 #Install Certbot.
@@ -111,14 +112,14 @@ sudo systemctl reload nginx
 #Get and register certificate.
 # do this is cert is not yet valid
 # otherwise skip so as not to get rate limit paused by Letsencrypt.
-nrec_ssl=`curl https://${MACHINE_NAME}.mitresearch.cloud -vI --stderr - | grep '^*  SSL certificate verify ok.' | wc -l`
+nrec_ssl=`curl https://${MACHINE_NAME}.${MACHINE_DOMAIN} -vI --stderr - | grep '^*  SSL certificate verify ok.' | wc -l`
 if [ $nrec_ssl -ne "1" ]; then
-sudo certbot --nginx --noninteractive --agree-tos --cert-name ${MACHINE_NAME}.mitresearch.cloud -d ${MACHINE_NAME}.mitresearch.cloud --register-unsafely-without-email --nginx --redirect
+sudo certbot --nginx --noninteractive --agree-tos --cert-name ${MACHINE_NAME}.${MACHINE_DOMAIN} -d ${MACHINE_NAME}.${MACHINE_DOMAIN} --register-unsafely-without-email --nginx --redirect
 sudo systemctl reload nginx
 fi
 
 #Test for Website.
-curl https://${MACHINE_NAME}.mitresearch.cloud
+curl https://${MACHINE_NAME}.${MACHINE_DOMAIN}
 
 #Add stage 0 index and .php
 #echo y | sudo apt install php7.4
@@ -162,7 +163,7 @@ EOFA
 #Make login page
 \rm fwd2login.php.template
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/fwd2login.php.template
-cat fwd2login.php.template | sed s'/XXXXREPLACE_WITH_MACHINE_URI_HEREXXXX/'${MACHINE_NAME}'/' | sudo tee /var/www/html/fwd2login.php
+cat fwd2login.php.template | sed s'/XXXXREPLACE_WITH_MACHINE_URI_HEREXXXX/'${MACHINE_NAME}.${MACHINE_DOMAIN}'/' | sudo tee /var/www/html/fwd2login.php
 
 
 
