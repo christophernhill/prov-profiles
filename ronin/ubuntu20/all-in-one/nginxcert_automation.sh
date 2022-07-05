@@ -169,3 +169,7 @@ cat fwd2login.php.template | sed s'/XXXXREPLACE_WITH_MACHINE_URI_HEREXXXX/'${MAC
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/login.php.template
 sudo cp login.php.template /var/www/html/login.php
 
+\rm index3.php.template
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/index3.php.template
+sudo cp index3.php.template /var/www/html/index3.php
+
