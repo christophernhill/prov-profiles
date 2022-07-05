@@ -100,9 +100,10 @@ sudo chmod 0644 /etc/fail2ban/jail.d/defaults-debian.conf
 #Start nginx web server.
 sudo systemctl start nginx 
 
-#Get and store machine name.
+#Get and store machine name and user
 MACHINE_NAME=`curl http://169.254.169.254/latest/meta-data/tags/instance/dns`
 MACHINE_DOMAIN="mitresearch.cloud"
+MACHINE_USER=`curl http://169.254.169.254/latest/meta-data/tags/instance/created_by | sed s/'.*:\(.*\)/\1/'`
 
 #Let's Encrypt installation
 #Install Certbot.
