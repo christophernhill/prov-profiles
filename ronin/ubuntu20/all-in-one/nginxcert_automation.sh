@@ -73,6 +73,10 @@ server {
 EOFA
 ) | sudo tee /etc/nginx/sites-available/default-http > /dev/null
 
+\rm nginx-default.template
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/nginx-default.template
+sudo cp nginx-default.template /etc/nginx/sites-available/default-http
+
 sudo /bin/rm /etc/nginx/sites-enabled/default-https
 sudo /bin/rm /etc/nginx/sites-enabled/default
 # sudo ln -s /etc/nginx/sites-available/default-https-base /etc/nginx/sites-enabled/default-https
