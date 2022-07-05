@@ -257,3 +257,16 @@ EOFA
 sudo cp nginx.conf /etc/nginx/nginx.conf
 fi
 sudo systemctl restart nginx
+
+#Install apache with out starting it yet (we use it for proxy stuff on non-standard port)
+sudo mkdir -p /usr/sbin/
+(
+cat <<'EOF'
+#!/bin/sh
+exit 101
+EOF
+) | sudo tee /usr/sbin/policy-rc.d
+sudo chmod 755 /usr/sbin/policy-rc.d
+sudo apt-get install -y apache2
+sudo rm -f /usr/sbin/policy-rc.d
+
