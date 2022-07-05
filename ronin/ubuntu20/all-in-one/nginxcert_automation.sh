@@ -256,4 +256,4 @@ q
 EOFA
 sudo cp nginx.conf /etc/nginx/nginx.conf
 fi
-systemctl restart nginx
+sudo systemctl restart nginx
