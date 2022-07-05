@@ -234,6 +234,8 @@ cat <<'EOFA'
 EOFA
 ) | sudo tee /lib/systemd/system/jupyter-lab.service
 sudo chmod 755 /lib/systemd/system/jupyter-lab.service
+systemctl enable jupyter-lab
+systemctl start  jupyter-lab
 
 
 
