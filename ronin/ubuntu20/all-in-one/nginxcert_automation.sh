@@ -177,3 +177,14 @@ sudo cp index3.php.template /var/www/html/index3.php
 sudo mkdir -p /home/root
 echo $MACHINE_USER | sudo tee /home/root/auth_eppn_ids.txt
 
+if [ ! -d /home/ubuntu/miniconda3 ]; then
+  \rm -fr Miniconda3-py39_4.10.3-Linux-x86_64.sh miniconda3
+  \rm -fr environment.yml
+  wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/environment.yml
+  wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh
+  chmod +x Miniconda3-py39_4.10.3-Linux-x86_64.sh
+  ./Miniconda3-py39_4.10.3-Linux-x86_64.sh -b -p miniconda3
+  . miniconda3/bin/activate
+  conda env create -f environment.yml
+fi
+
