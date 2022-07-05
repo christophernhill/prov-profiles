@@ -165,6 +165,7 @@ EOFA
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/fwd2login.php.template
 cat fwd2login.php.template | sed s'/XXXXREPLACE_WITH_MACHINE_URI_HEREXXXX/'${MACHINE_NAME}.${MACHINE_DOMAIN}'/' | sudo tee /var/www/html/fwd2login.php
 
-
-
+\rm login.php.template
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/login.php.template
+sudo cp login.php.template /var/www/html/login.php
 
