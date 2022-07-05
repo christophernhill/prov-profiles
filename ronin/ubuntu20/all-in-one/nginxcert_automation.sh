@@ -189,6 +189,9 @@ if [ ! -d /home/ubuntu/miniconda3 ]; then
   conda env create -f environment.yml
 fi
 
+#Install free port helper script for Jupyter lab service
 \rm -fr get_free_port.sh
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/get_free_port.sh
 chmod +x get_free_port.sh
+
+
