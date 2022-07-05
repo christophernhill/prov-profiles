@@ -65,6 +65,11 @@ if ( abs(($dts - intval($tcode))) > 5 ) {
 	exit();
 }
 
+$auth_eppn_list=file("/home/root/auth_eppn_ids.txt", FILE_IGNORE_NEW_LINES);
+var_dump($auth_eppn_list);print "</br>";
+
+$ueppn_match=in_array($ueppn,$auth_eppn_list,true);
+
 ?>
 
     <br/>
