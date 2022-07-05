@@ -238,4 +238,15 @@ sudo systemctl enable jupyter-lab
 sudo systemctl start  jupyter-lab
 
 
-
+#Tweak nginx to allow longer names
+cp /etc/nginx/nginx.conf .
+ed nginx.conf <<'EOFA'
+/server_names_hash_bucket_size
+a
+	server_names_hash_bucket_size 128;
+.
+w
+q
+EOFA
+sudo cp nginx.conf /etc/nginx/nginx.conf
+systemctl restart nginx
