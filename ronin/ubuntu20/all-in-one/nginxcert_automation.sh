@@ -189,7 +189,7 @@ if [ ! -d /home/ubuntu/miniconda3 ]; then
   conda env create -f environment.yml
 fi
 
-#Install Jupyter lab service
+#Install Jupyter lab service bits
 \rm -fr get_free_port.sh
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/get_free_port.sh
 chmod +x get_free_port.sh
@@ -197,5 +197,37 @@ chmod +x get_free_port.sh
 \rm -fr start_jupyter.sh
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/start_jupyter.sh
 chmod +x start_jupyter.sh
+
+(
+cat <<'EOFA'
+       # service name:     jupyter-lab.service 
+       # path:             /lib/systemd/system/jupyter-lab.service
+
+       [Unit]
+       Description=Jupyter Lab Server
+
+       [Service]
+       Type=simple
+       PIDFile=/run/jupyter-lab.pid
+
+       EnvironmentFile=/home/ubuntu/.jupyter/env
+
+       # Jupyter Notebook: change PATHs as needed for your system
+       # ExecStart=/home/ubuntu/miniconda3/envs/mit-ronin-conda-2022a/bin/jupyter-lab --no-browser --ServerApp.token='' --ServerApp.password='' --ServerApp.ip='*'
+       # ExecStart=/home/ubuntu/miniconda3/envs/mit-ronin-conda-2022a/bin/jupyter-lab --no-browser --ServerApp.token='' --ServerApp.password=''
+       ExecStart=/home/ubuntu/start_jupyter.sh
+
+       User=ubuntu
+       Group=ubuntu
+       WorkingDirectory=/home/ubuntu
+       Restart=always
+       RestartSec=10
+
+       [Install]
+       WantedBy=multi-user.target
+EOFA
+) | sudo tee /lib/systemd/system/jupyter-lab.service
+sudo chmod 755 /lib/systemd/system/jupyter-lab.service
+
 
 
