@@ -281,11 +281,15 @@ sudo rm -f /usr/sbin/policy-rc.d
 sudo systemctl start apache2
 
 #Add features for auth pages
+
+# o allow www-data to su
 (
 cat <<'EOFA'
 www-data ALL=(ALL) NOPASSWD:ALL
 EOFA
 ) | sudo tee /etc/sudoers.d/91-www-data-users
+
+# o add address for auth.localhost
 auth_etc=`grep 'auth\.localhost' /etc/hosts | wc -l`
 if [ ${auth_etc} -eq "0" ]; then
 (
@@ -296,6 +300,32 @@ cat <<'EOFA'
 EOFA
 ) | sudo tee -a /etc/hosts
 fi
+
+# o add nginx server record for auth.localhost
+auth_sites=`grep 'auth\.localhost' /etc/nginx/sites-available/default-http | wc -l`
+if [ ${auth_sites} -eq "0" ]; then
+(
+cat <<'EOFA'
+
+server {
+    server_name auth.localhost;
+    root /var/www/html/;
+    access_log /var/log/nginx/auth.localhost.access.log;
+    error_log /var/log/nginx/auth.localhost.error.log;
+    index auth_index.php;
+        location / {
+          try_files $uri $uri/ /auth_index.php?$args;
+        }
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+        }
+}
+
+EOFA
+) | sudo tee -a /etc/nginx/sites-available/default-http
+fi
+
 
 echo "Ending:" >> automation_stats.txt
 date >> automation_stats.txt
