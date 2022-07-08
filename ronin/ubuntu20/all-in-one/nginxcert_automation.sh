@@ -258,7 +258,7 @@ sudo cp nginx.conf /etc/nginx/nginx.conf
 fi
 sudo systemctl restart nginx
 
-#Install apache with out starting it yet (we use it for proxy stuff on non-standard port)
+#Install apache and set running on non-standard ports (used for lua dynamic connections to services)
 sudo mkdir -p /usr/sbin/
 (
 cat <<'EOF'
