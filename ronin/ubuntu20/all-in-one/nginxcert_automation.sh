@@ -3,6 +3,9 @@
 # this script is currently run at every boot time by the crontab command
 # @reboot sh /home/ubuntu/nginxcert_automation.sh
 
+echo "Starting:" > automation_stats.txt
+date >> automation_stats.txt
+
 #Link to AWS. 
 curl http://10.0.1.106/add-http-https-access.php 
 
@@ -274,3 +277,5 @@ sudo /binb/cp 000-default-conf.template /etc/apache2/sites-available/000-default
 sudo rm -f /usr/sbin/policy-rc.d
 sudo systemctl start apache2
 
+echo "Ending:" >> automation_stats.txt
+date >> automation_stats.txt
