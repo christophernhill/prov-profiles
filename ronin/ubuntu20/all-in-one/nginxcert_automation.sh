@@ -279,3 +279,5 @@ sudo systemctl start apache2
 
 echo "Ending:" >> automation_stats.txt
 date >> automation_stats.txt
+
+
