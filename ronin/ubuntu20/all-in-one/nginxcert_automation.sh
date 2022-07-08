@@ -290,6 +290,8 @@ auth_etc=`grep 'auth\.localhost' /etc/hosts | wc -l`
 if [ ${auth_etc} -eq "0" ]; then
 (
 cat <<'EOFA'
+
+#added by SCITC provisioning
 127.0.0.1 auth.localhost
 EOFA
 ) | sudo tee -a /etc/hosts
