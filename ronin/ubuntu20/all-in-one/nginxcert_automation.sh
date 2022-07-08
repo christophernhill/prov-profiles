@@ -273,7 +273,7 @@ sudo chmod 755 /usr/sbin/policy-rc.d
 sudo apt-get install -y apache2
 \rm 000-default-conf.template
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/000-default-conf.template
-sudo /binb/cp 000-default-conf.template /etc/apache2/sites-available/000-default.conf
+sudo /bin/cp 000-default-conf.template /etc/apache2/sites-available/000-default.conf
 sudo rm -f /usr/sbin/policy-rc.d
 sudo systemctl start apache2
 
