@@ -274,6 +274,9 @@ sudo apt-get install -y apache2
 \rm 000-default-conf.template
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/000-default-conf.template
 sudo /bin/cp 000-default-conf.template /etc/apache2/sites-available/000-default.conf
+\rm ports.conf.template
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/ports.conf.template
+sudo /bin/cp ports.conf.template /etc/apache2/ports.conf
 sudo rm -f /usr/sbin/policy-rc.d
 sudo systemctl start apache2
 
