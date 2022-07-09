@@ -11,7 +11,7 @@ echo > install_log.txt
 \rm stage1.sh
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/stage1.sh
 chmod +x stage1.sh
-./stage1.sh >> install_log.txt
+./stage1.sh >> install_log.txt 2>&1
 
 
 #Link to AWS. 
