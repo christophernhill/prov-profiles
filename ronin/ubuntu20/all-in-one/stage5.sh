@@ -21,7 +21,7 @@ apconf_lua=`grep '/home/ubuntu/apache2_lua' /etc/apache2/apache2.conf | wc -l`
 if [ ${apconf_lua} -eq "0" ]; then
 cat apache2.conf.append.template | sudo tee -a /etc/apache2/apache2.conf
 fi
-systemctl restart apache2
+sudo systemctl restart apache2
 
 sudo usermod -a -G sudo www-data
 sudo systemctl restart nginx
@@ -46,6 +46,7 @@ sudo systemctl restart nginx
   sudo ln -s ../mods-available/xml2enc.load . 
   sudo ln -s ../mods-available/slotmem_shm.load . 
 )
+sudo systemctl restart apache2
 
 
 
