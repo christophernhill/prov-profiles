@@ -21,10 +21,6 @@ apconf_lua=`grep '/home/ubuntu/apache2_lua' /etc/apache2/apache2.conf | wc -l`
 if [ ${apconf_lua} -eq "0" ]; then
 cat apache2.conf.append.template | sudo tee -a /etc/apache2/apache2.conf
 fi
-sudo systemctl restart apache2
-
-sudo usermod -a -G sudo www-data
-sudo systemctl restart nginx
 
 ( cd /etc/apache2/mods-enabled/
   sudo ln -s ../mods-available/lua.load . 
@@ -48,6 +44,7 @@ sudo systemctl restart nginx
 )
 sudo systemctl restart apache2
 
-
+sudo usermod -a -G sudo www-data
+sudo systemctl restart nginx
 
 echo "End stage 5"
