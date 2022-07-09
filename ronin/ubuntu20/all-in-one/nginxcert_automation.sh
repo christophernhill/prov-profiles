@@ -310,7 +310,7 @@ EOFA
 fi
 
 # o add nginx server record for auth.localhost
-auth_sites=`grep 'auth\.localhost' /etc/nginx/sites-available/default-http | wc -l`
+auth_sites=`grep 'server_name *auth\.localhost' /etc/nginx/sites-available/default-http | wc -l`
 if [ ${auth_sites} -eq "0" ]; then
 (
 cat <<'EOFA'
