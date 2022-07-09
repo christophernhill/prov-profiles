@@ -1,0 +1,33 @@
+#CNH
+# note - also ln -s ../mods-available/lua.load .
+# in mods-enabled
+<Location "/">
+Require local
+</Location>
+<Files "*.lua">
+    SetHandler lua-script
+</Files>
+# Include lua functions
+LuaRoot "/home/ubuntu/apache2_lua"
+LogLevel lua_module:info
+LuaHookLog logger.lua logger
+
+<LocationMatch "^/jupyter/port_(?<port>\d+)(?<uri>/.*|)">
+   LuaHookFixups node_proxy.lua node_proxy_handler
+</LocationMatch>
+##  <LocationMatch "^/node/(?<host>node\d\d\d\d.inband)/(?<port>\d+)">
+##    AuthType openid-connect
+##    Require valid-user
+##
+##    # ProxyPassReverse implementation
+##    Header edit Location "^[^/]+//[^/]+" ""
+##
+##    # ProxyPassReverseCookieDomain implemenation
+##    Header edit* Set-Cookie ";\s*(?i)Domain[^;]*" ""
+##
+##    # ProxyPassReverseCookiePath implementation
+##    Header edit* Set-Cookie ";\s*(?i)Path[^;]*" ""
+##    Header edit  Set-Cookie "^([^;]+)" "$1; Path=/node/%{MATCH_HOST}e/%{MATCH_PORT}e"
+##
+##    LuaHookFixups node_proxy.lua node_proxy_handler
+##  </LocationMatch>
