@@ -6,6 +6,14 @@
 echo "Starting:" > automation_stats.txt
 date >> automation_stats.txt
 
+echo > install_log.txt
+
+\rm stage1.sh
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/stage1.sh
+chmod +x stage1.sh
+./stage1.sh >> install_log.txt
+
+
 #Link to AWS. 
 curl http://10.0.1.106/add-http-https-access.php 
 
