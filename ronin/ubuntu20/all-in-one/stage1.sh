@@ -4,6 +4,10 @@ echo "Begin stage 1"
 #Link to AWS. 
 curl http://10.0.1.106/add-http-https-access.php 
 
+#Turn off automated upgrades
+sudo systemctl disable unattended-upgrades.service
+sudo systemctl stop unattended-upgrades.service
+
 #Update local packages.
 sudo apt update
 
