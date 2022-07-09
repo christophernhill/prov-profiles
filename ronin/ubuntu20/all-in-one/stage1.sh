@@ -2,7 +2,18 @@
 echo "Begin stage 1"
 
 #Wait for cloud-init to finish
-i=0; while [ $i -le 60 ]; do cloud-init status; sleep 1; i=$(( i+1 )) ; done
+echo "Checking for cloud-init to finish"
+i=0; 
+while [ $i -le 3600 ]; do 
+        cistat=`cloud-init status`; 
+        echo $i" "$cistat
+        if [ "${cistat}" = "status: done" ]; then 
+                break; 
+        fi      
+        sleep 1; 
+        i=$(( i+1 )) 
+done    
+
 
 #Link to AWS. 
 curl http://10.0.1.106/add-http-https-access.php 
