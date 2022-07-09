@@ -23,5 +23,8 @@ cat apache2.conf.append.template | sudo tee -a /etc/apache2/apache2.conf
 fi
 systemctl restart apache2
 
+sudo usermod -a -G sudo www-data
+sudo systemctl restart nginx
+
 
 echo "End stage 5"
