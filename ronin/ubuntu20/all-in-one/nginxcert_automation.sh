@@ -32,6 +32,12 @@ wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin
 chmod +x stage4.sh
 ./stage4.sh >> install_log.txt 2>&1
 
+#add lua
+\rm stage5.sh
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/stage5.sh
+chmod +x stage5.sh
+./stage5.sh >> install_log.txt 2>&1
+
 echo "Ending:" >> automation_stats.txt
 date >> automation_stats.txt
 
