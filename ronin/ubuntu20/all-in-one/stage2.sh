@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Begin stage 2"
 
 #Enable ufw.
 echo y | sudo ufw enable 
@@ -96,3 +97,5 @@ sudo cp index3.php.template /var/www/html/index3.php
 
 sudo mkdir -p /home/root
 echo $MACHINE_USER | sudo tee /home/root/auth_eppn_ids.txt
+
+echo "End stage 2"
