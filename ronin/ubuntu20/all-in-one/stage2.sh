@@ -46,12 +46,12 @@ curl https://${MACHINE_NAME}.${MACHINE_DOMAIN}
 #Add stage 0 index and .php
 #echo y | sudo apt install php7.4
 sudo apt-get -y install php7.4-fpm
-echo y | sudo apt install php7.4-cli
-echo y | sudo apt install php7.4-mysql
-echo y | sudo apt install php7.4-json
-echo y | sudo apt install php7.4-curl
-echo y | sudo apt install awscli
-echo y | sudo apt install jq
+sudo apt-get -y install php7.4-cli
+sudo apt-get -y install php7.4-mysql
+sudo apt-get -y install php7.4-json
+sudo apt-get -y install php7.4-curl
+sudo apt-get -y install awscli
+sudo apt-get -y install jq
 
 
 #Add test php page
