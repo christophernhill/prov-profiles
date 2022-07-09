@@ -15,5 +15,8 @@ cp node_proxy.lua.template apache2_lua/node_proxy.lua
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/proxy.lua.template
 cp proxy.lua.template apache2_lua/proxy.lua
 
+\rm apache2.conf.append.template
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/apache2.conf.append.template
+
 
 echo "End stage 5"
