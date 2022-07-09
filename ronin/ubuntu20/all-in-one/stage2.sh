@@ -8,7 +8,7 @@ sudo ufw allow 'Nginx Full'
 sudo ufw status
 
 #Enable fail2ban with setup for ssh
-echo y | sudo apt install fail2ban
+sudo apt-get -y install fail2ban
 (
 sudo cat <<!
         [sshd]
@@ -28,7 +28,7 @@ MACHINE_USER=`curl http://169.254.169.254/latest/meta-data/tags/instance/created
 
 #Let's Encrypt installation
 #Install Certbot.
-echo y | sudo apt install certbot python3-certbot-nginx 
+sudo apt-get -y install certbot python3-certbot-nginx 
 sudo systemctl reload nginx
 
 #Get and register certificate.
@@ -45,7 +45,7 @@ curl https://${MACHINE_NAME}.${MACHINE_DOMAIN}
 
 #Add stage 0 index and .php
 #echo y | sudo apt install php7.4
-echo y | sudo apt install php7.4-fpm
+sudo apt-get -y install php7.4-fpm
 echo y | sudo apt install php7.4-cli
 echo y | sudo apt install php7.4-mysql
 echo y | sudo apt install php7.4-json
