@@ -9,11 +9,11 @@ sudo systemctl disable unattended-upgrades.service
 sudo systemctl stop unattended-upgrades.service
 
 #Update local packages.
-sudo apt update
+sudo apt-get -y update
 
 #Nginx and php installation.
 #Update local packages.
-echo y | sudo apt install nginx
+sudo apt-get -y install nginx
 
 #Configure basic nginx with invalid cert ssl
 if [ ! -d /etc/nginx/ssl/ ]; then
