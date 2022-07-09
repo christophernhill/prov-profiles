@@ -26,5 +26,27 @@ systemctl restart apache2
 sudo usermod -a -G sudo www-data
 sudo systemctl restart nginx
 
+( cd /etc/apache2/mods-enabled/
+  sudo ln -s ../mods-available/lua.load . 
+  sudo ln -s ../mods-available/proxy.load . 
+  sudo ln -s ../mods-available/proxy_wstunnel.load . 
+  sudo ln -s ../mods-available/proxy_uwsgi.load . 
+  sudo ln -s ../mods-available/proxy_scgi.load . 
+  sudo ln -s ../mods-available/proxy_http2.load . 
+  sudo ln -s ../mods-available/proxy_http.load . 
+  sudo ln -s ../mods-available/proxy_html.load . 
+  sudo ln -s ../mods-available/proxy_hcheck.load . 
+  sudo ln -s ../mods-available/proxy_ftp.load . 
+  sudo ln -s ../mods-available/proxy_fdpass.load . 
+  sudo ln -s ../mods-available/proxy_fcgi.load . 
+  sudo ln -s ../mods-available/proxy_express.load . 
+  sudo ln -s ../mods-available/proxy_connect.load . 
+  sudo ln -s ../mods-available/proxy_balancer.load . 
+  sudo ln -s ../mods-available/proxy_ajp.load . 
+  sudo ln -s ../mods-available/xml2enc.load . 
+  sudo ln -s ../mods-available/slotmem_shm.load . 
+)
+
+
 
 echo "End stage 5"
