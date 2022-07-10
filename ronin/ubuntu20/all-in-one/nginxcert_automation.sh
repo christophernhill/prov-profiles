@@ -44,6 +44,12 @@ wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin
 chmod +x stage6.sh
 ./stage6.sh >> install_log.txt 2>&1
 
+#add environment modules
+\rm stage7.sh
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/stage7.sh
+chmod +x stage7.sh
+./stage7.sh >> install_log.txt 2>&1
+
 
 echo "Ending:" >> automation_stats.txt
 date >> automation_stats.txt
