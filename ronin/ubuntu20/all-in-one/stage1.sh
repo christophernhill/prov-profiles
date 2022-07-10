@@ -12,7 +12,10 @@ while [ $i -le 3600 ]; do
         fi      
         sleep 1; 
         i=$(( i+1 )) 
-done    
+done  
+
+sudo systemctl stop    apt-daily-upgrade
+sudo systemctl disable apt-daily-upgrade
 
 
 #Link to AWS. 
