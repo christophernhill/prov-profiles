@@ -1,4 +1,5 @@
 #!/bin/bash
+# sudo systemctl set-default multi-user
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y xfce4 tigervnc-standalone-server novnc websockify
 mkdir -p /home/ubuntu/.vnc
 cat > /home/ubuntu/.vnc/xstartup <<'EOFA'
