@@ -38,6 +38,13 @@ wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin
 chmod +x stage5.sh
 ./stage5.sh >> install_log.txt 2>&1
 
+#add vnc
+\rm stage6.sh
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/stage6.sh
+chmod +x stage6.sh
+./stage6.sh >> install_log.txt 2>&1
+
+
 echo "Ending:" >> automation_stats.txt
 date >> automation_stats.txt
 
