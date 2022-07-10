@@ -14,6 +14,11 @@ while [ $i -le 3600 ]; do
         i=$(( i+1 )) 
 done  
 
+#Turn off automated apt services for now
+sudo systemctl stop apt-daily-upgrade.timer
+sudo systemctl disable apt-daily-upgrade.timer
+sudo systemctl stop apt-daily-upgrade.service
+sudo systemctl disable apt-daily-upgrade.service
 sudo systemctl stop    apt-daily-upgrade
 sudo systemctl disable apt-daily-upgrade
 sudo systemctl kill --kill-who=all apt-daily.service
