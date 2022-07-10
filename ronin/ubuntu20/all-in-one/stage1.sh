@@ -16,6 +16,12 @@ done
 
 sudo systemctl stop    apt-daily-upgrade
 sudo systemctl disable apt-daily-upgrade
+sudo systemctl kill --kill-who=all apt-daily.service
+while ! (systemctl list-units --all apt-daily.service | egrep -q '(dead|failed)')
+do
+  sleep 1;
+done
+
 
 
 #Link to AWS. 
