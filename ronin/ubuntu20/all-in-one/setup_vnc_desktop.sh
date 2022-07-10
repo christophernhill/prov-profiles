@@ -1,6 +1,8 @@
 #!/bin/bash
 # sudo systemctl set-default multi-user
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y xfce4 tigervnc-standalone-server novnc websockify
+sudo systemctl stop gdm3
+sudo systemctl disable gdm3
 mkdir -p /home/ubuntu/.vnc
 cat > /home/ubuntu/.vnc/xstartup <<'EOFA'
 #!/bin/bash
