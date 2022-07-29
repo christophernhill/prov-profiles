@@ -99,6 +99,12 @@ sudo cp index3.php.template /var/www/html/index3.php
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/auth_index.php.template
 sudo cp auth_index.php.template /var/www/html/auth_index.php
 
+sudo mkdir -p /var/www/php/prov
+\rm prov_functions.php.template
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/prov_functions.php.template
+sudo cp prov_functions.php.template /var/www/php/prov/functions.php
+
+
 
 sudo mkdir -p /home/root
 echo $MACHINE_USER | sudo tee /home/root/auth_eppn_ids.txt
