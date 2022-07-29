@@ -109,6 +109,11 @@ sudo cp prov_functions.php.template /var/www/php/prov/functions.php
 wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/jupyter.php.template
 sudo cp jupyter.php.template /var/www/html/jupyter.php
 
+\rm get_current_jupyter_lab_port.sh.template
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/current_jupyter_lab_port.sh.template
+cp get_current_jupyter_lab_port.sh.template get_current_jupyter_lab_port.sh
+chmod +x get_current_jupyter_lab_port.sh
+
 
 sudo mkdir -p /home/root
 echo $MACHINE_USER | sudo tee /home/root/auth_eppn_ids.txt
