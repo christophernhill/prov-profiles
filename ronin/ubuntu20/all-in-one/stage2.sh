@@ -105,6 +105,10 @@ wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin
 sudo cp prov_functions.php.template /var/www/php/prov/functions.php
 
 
+\rm jupyter.php.template
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/jupyter.php.template
+sudo cp jupyter.php.template /var/www/html/jupyter.php
+
 
 sudo mkdir -p /home/root
 echo $MACHINE_USER | sudo tee /home/root/auth_eppn_ids.txt
