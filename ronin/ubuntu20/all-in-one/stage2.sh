@@ -110,7 +110,7 @@ wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin
 sudo cp jupyter.php.template /var/www/html/jupyter.php
 
 \rm get_current_jupyter_lab_port.sh.template
-wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/current_jupyter_lab_port.sh.template
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/get_current_jupyter_lab_port.sh.template
 cp get_current_jupyter_lab_port.sh.template get_current_jupyter_lab_port.sh
 chmod +x get_current_jupyter_lab_port.sh
 
