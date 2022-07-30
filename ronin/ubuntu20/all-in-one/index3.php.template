@@ -89,7 +89,7 @@ if ( $ueppn_match ) {
         echo '&nbsp;';
         echo '&nbsp;';
         echo '&nbsp;';
-        echo '<a href="href=/novnc/vnc.html" class="btn btn-primary btn-lg" role="button">Connect to Virtual Desktop</a>';
+        echo '<a href="/novnc/vnc.html" class="btn btn-primary btn-lg" role="button">Connect to Virtual Desktop</a>';
         echo '<br/>';
 } else {
 	print("Error: \"" . $ueppn . "\" not in authorized list");print "</br>";
