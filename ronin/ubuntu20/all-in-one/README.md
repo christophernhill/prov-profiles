@@ -32,3 +32,12 @@ ubuntu@ip-10-0-1-234:~$ crontab -l
 # m h  dom mon dow   command
 @reboot sh /home/ubuntu/setup_machine.sh
 ```
+
+```
+ubuntu@ip-10-0-1-234:~$ cat setup_machine.sh 
+#!/bin/bash
+\rm nginxcert_automation.sh
+wget https://raw.githubusercontent.com/christophernhill/prov-profiles/main/ronin/ubuntu20/all-in-one/nginxcert_automation.sh
+chmod +x nginxcert_automation.sh
+./nginxcert_automation.sh
+```
