@@ -112,7 +112,7 @@ packages:
 EOF
 vagrant scp spack_externals.yaml :.spack/packages.yaml
 
-cat <<'EOF' > spack_modules.yam
+cat <<'EOF' > spack_modules.yaml
 modules:
   default:
     roots:
