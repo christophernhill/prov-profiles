@@ -115,6 +115,7 @@ vagrant scp spack_externals.yaml :.spack/packages.yaml
 
 cat <<EOF | vagrant ssh
 cd spack-2023-04
+cd spack-git
 . ./share/spack/setup-env.sh
 # spack install gcc@12.2.0
 spack module lmod refresh -y
