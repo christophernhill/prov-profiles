@@ -111,7 +111,7 @@ packages:
     compiler: [gcc@8.5.0]
 EOF
 
-vagrant scp 
+vagrant scp spack_externals.yaml :.spack/pacakges.yaml
 
 
 
