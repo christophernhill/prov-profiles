@@ -23,6 +23,7 @@ export VAGRANT_HOME=${MY_VAGRANT_SETUP_ROOT}/.vagrant.d
 export VAGRANT_DOTFILE_PATH=${MY_VAGRANT_SETUP_ROOT}/.vagrant
 
 cd vagrant
+vagrant plugin install vagrant-disksize
 cat >Vagrantfile <<'EOF'
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/rocky8"
