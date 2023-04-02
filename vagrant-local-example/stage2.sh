@@ -19,7 +19,7 @@ sudo yum -y install lua lua-filesystem lua-posix tcl
 sudo yum -y install unzip
 sudo yum -y install Lmod
 sudo yum -y install gdbm-devel
-sudo yum -y install zstd
+sudo yum -y install zstd libzstd libzstd-devel
 sudo yum -y install bison bison-devel bison-runtime
 sudo yum -y install gmp gmp-c++ gmp-devel
 sudo yum -y install libmpc libmpc-devel
