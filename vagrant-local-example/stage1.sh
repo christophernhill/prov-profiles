@@ -17,4 +17,10 @@ WORK_DIR=$(basename `mktemp -u -t vgrnt`)
 mkdir -p ${WORK_DIR}
 cd ${WORK_DIR}
 
+mkdir vagrant
+export MY_VAGRANT_SETUP_ROOT=`pwd`
+export VAGRANT_HOME=${MY_VAGRANT_SETUP_ROOT}/.vagrant.d
+export VAGRANT_DOTFILE_PATH=${MY_VAGRANT_SETUP_ROOT}/.vagrant
+
+cd vagrant
 
