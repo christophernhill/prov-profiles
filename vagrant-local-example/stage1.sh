@@ -23,4 +23,13 @@ export VAGRANT_HOME=${MY_VAGRANT_SETUP_ROOT}/.vagrant.d
 export VAGRANT_DOTFILE_PATH=${MY_VAGRANT_SETUP_ROOT}/.vagrant
 
 cd vagrant
-
+cat >Vagrantfile <<'EOF'
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/rocky8"
+  config.disksize.size = '500GB'
+  config.vm.provider "virtualbox" do |vb|
+      vb.memory = "8192"
+      vb.cpus   = 4
+  end
+end
+EOF
