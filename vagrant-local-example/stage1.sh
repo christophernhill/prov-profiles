@@ -73,6 +73,7 @@ cat <<EOF > clean.sh
 source ./setup.sh
 vagrant destroy
 EOF
+chmod +x ./clean.sh
 
 
 
