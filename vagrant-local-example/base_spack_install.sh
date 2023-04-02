@@ -137,6 +137,8 @@ cd spack-git
 spack install gcc@12.2.0
 spack module lmod refresh -y
 spack module lmod refresh --delete-tree -y; mv /home/vagrant/modules/2023-04/Core/* /home/vagrant/modules/2023-04; rmdir /home/vagrant/modules/2023-04/Core/
+module --terse avail 2>&1 | grep : | tr ':' ' ' | awk '{print "module unuse "$1}' > munuse.txt
+source munuse.txt
 module use /home/vagrant/modules/2023-04/
 mname=`module -t avail  2>&1 | grep '^gcc/12' `
 module load $mname
