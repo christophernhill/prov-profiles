@@ -18,5 +18,6 @@ sudo yum -y install git
 sudo yum -y install lua lua-filesystem lua-posix tcl
 sudo yum -y install unzip
 sudo yum -y install Lmod
+sudo yum -y install gdbm-devel
 
 EOF
