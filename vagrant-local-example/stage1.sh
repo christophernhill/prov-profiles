@@ -70,8 +70,11 @@ cat <<EOF > clean.sh
 # To use
 # ./clean.sh
 #
+# detroys machines and cleans up box images
+#
 source ./setup.sh
 vagrant destroy
+vagrant box list | grep -v 'There are no installed boxes' | awk '{print "vagrant box remove "$1}'  | /bin/bash
 EOF
 chmod +x ./clean.sh
 
