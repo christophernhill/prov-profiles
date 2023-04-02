@@ -15,4 +15,6 @@ sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.
 sudo dnf config-manager --set-enabled powertools
 
 sudo yum -y install git
+sudo yum -y install lua lua-filesystem lua-posix tcl
+
 EOF
