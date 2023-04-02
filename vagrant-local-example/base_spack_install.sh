@@ -128,7 +128,7 @@ modules:
       projections:
             all: '{name}/{version}'
 EOF
-vagrant scp spack_externals.yaml :.spack/modules.yaml
+vagrant scp spack_modules.yaml :.spack/modules.yaml
 
 cat <<EOF | vagrant ssh
 cd spack-2023-04
