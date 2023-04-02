@@ -47,4 +47,16 @@ sudo lvextend -l +100%FREE /dev/mapper/rl_rocky8-root
 sudo xfs_growfs -d /dev/mapper/rl_rocky8-root
 EOF
 
+cat <<EOF > setup.sh
+#!/bin/bash
+#
+# To use
+# source ./setup.sh
+#
+export MY_VAGRANT_SETUP_ROOT=${MY_VAGRANT_SETUP_ROOT}
+export VAGRANT_HOME=${MY_VAGRANT_SETUP_ROOT}/.vagrant.d
+export VAGRANT_DOTFILE_PATH=${MY_VAGRANT_SETUP_ROOT}/.vagrant
+EOF
+
+
 
