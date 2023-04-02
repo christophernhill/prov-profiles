@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# Create a basic Rocky 8 Vagrant + Virtual box VM with 8GB, 4 CPUS and 500GB root drive
+#
 #
 
 ROOTDIR=.
