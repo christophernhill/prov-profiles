@@ -7,6 +7,19 @@
 
 source ./setup.sh
 
+cat <<EOF > setup_spack.src
+mkdir spack-2023-04
+cd spack-2023-04
+git clone https://github.com/spack/spack
+mv spack spack-git
+mkdir .spack
+ln -s `pwd`/.spack ~/.spack
+cd spack-git
+. ./share/spack/setup-env.sh
+spack compiler find
+EOF
+vagrant ssh 
+
 cat <<EOF > spack_externals.yaml
 packages:
   pkgconf:
