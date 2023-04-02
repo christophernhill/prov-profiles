@@ -22,6 +22,7 @@ sudo yum -y install gdbm-devel
 sudo yum -y install zstd
 sudo yum -y install bison bison-devel bison-runtime
 sudo yum -y install gmp gmp-c++ gmp-devel
+sudo yum -y install libmpc libmpc-devel
 
 
 EOF
