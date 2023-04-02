@@ -65,7 +65,7 @@ export VAGRANT_HOME=${MY_VAGRANT_SETUP_ROOT}/.vagrant.d
 export VAGRANT_DOTFILE_PATH=${MY_VAGRANT_SETUP_ROOT}/.vagrant
 EOF
 
-cat <<EOF > clean.sh
+cat <<'EOF' > clean.sh
 #!/bin/bash
 #
 # To use
