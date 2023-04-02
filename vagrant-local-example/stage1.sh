@@ -36,3 +36,15 @@ end
 EOF
 
 vagrant up
+
+cat <<'EOF' | vagrant ssh
+### Resizing with Rocky
+sudo yum install -y e2fsprogs lvm2
+sudo yum install cloud-utils-growpart gdisk -y
+sudo growpart /dev/sda 2
+sudo pvresize /dev/sda2
+sudo lvextend -l +100%FREE /dev/mapper/rl_rocky8-root 
+sudo xfs_growfs -d /dev/mapper/rl_rocky8-root
+EOF
+
+
