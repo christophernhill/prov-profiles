@@ -2,6 +2,10 @@
 #
 # Create a basic Rocky 8 Vagrant + Virtual box VM with 8GB, 4 CPUS and 500GB root drive
 #
+# can be executed as
+# $ curl -s https://raw.githubusercontent.com/christophernhill/prov-profiles/main/vagrant-local-example/stage1.sh | \
+#   /bin/bash
+#
 #
 
 ROOTDIR=.
