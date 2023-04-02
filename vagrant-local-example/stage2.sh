@@ -20,5 +20,6 @@ sudo yum -y install unzip
 sudo yum -y install Lmod
 sudo yum -y install gdbm-devel
 sudo yum -y install zstd
+sudo yum -y install bison bison-devel bison-runtime
 
 EOF
