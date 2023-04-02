@@ -111,7 +111,18 @@ packages:
     compiler: [gcc@8.5.0]
 EOF
 
-vagrant scp spack_externals.yaml :.spack/pacakges.yaml
+vagrant scp spack_externals.yaml :.spack/packages.yaml
+
+cat <<EOF | vagrant ssh
+cd spack-2023-04
+. ./share/spack/setup-env.sh
+# spack install gcc@12.2.0
+# spack module lmod refresh -y
+# module use share/spack/modules/linux-rocky8-sandybridge
+# mname=`module -t avail  2>&1 | grep '^gcc-12' `
+# module load $mname
+spack compiler find
+EOF
 
 
 
