@@ -23,6 +23,7 @@ sudo yum -y install zstd libzstd libzstd-devel
 sudo yum -y install bison bison-devel bison-runtime
 sudo yum -y install gmp gmp-c++ gmp-devel
 sudo yum -y install libmpc libmpc-devel
+sudo yum -y install numactl
 
 
 EOF
