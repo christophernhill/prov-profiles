@@ -26,3 +26,4 @@ sudo yum -y install libmpc libmpc-devel
 
 
 EOF
+cat core-packages-install.src | vagrant ssh
