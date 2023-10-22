@@ -1,0 +1,67 @@
+modules:
+  default:
+    enable:
+    - lmod
+    lmod:
+      hash_length: 0
+      hierarchy:
+      - mpi
+      exclude_implicits: true
+      include:
+      - anaconda3
+      - apptainer
+      - cmake
+      - cryptsetup
+      - cuda
+      - fftw
+      - gcc
+      - git
+      - hdf5
+      - libxml2
+      - pkgconf
+      - python
+      - r
+      - shadow
+      - singularity
+      - squashfs
+      - squashfs-mount
+      - squashfuse
+      - zlib
+      exclude:
+      - '%gcc@8.5.0'
+      - hwloc
+      - ucx
+      - xpmem
+      orca:
+        environment:
+          prepend_path:
+            LD_LIBRARY_PATH: /software/spack-20230328/opt/spack/linux-rocky8-x86_64/gcc-12.2.0/openmpi-4.1.4-3r4zaihkaqj2gmfvtzk4adiu3qxlzgj5/lib/
+      all:
+        suffixes:
+          +cuda: cuda
+          +hl: hl
+          +ib-hw-tm: ibhwtm
+          +ilp64: ilp64
+          +jit: jit
+          +knem: knem
+          +mlx5-dv: mlx5dv
+          +pmi: pmi
+          +rocm: rocm
+          +ucx: ucx
+          +verbs: verbs
+          +xpmem: xpmem
+          arch=linux-rocky8-x86_64: x86_64
+          arch=linux-rocky8-zen3: zen3
+          fabrics=auto: auto
+          fabrics=ucx,verbs: verbs-ucx
+          fabrics=ucx: ucx
+          fabrics=verbs,ucx: verbs-ucx
+          fabrics=verbs: verbs
+          schedulers=none: noslurm
+          ~pmi: mpirun
+        autoload: direct
+        environment:
+          set:
+            SPACK_PKG_{name}_ROOT: '{package.cmake_prefix_paths}'
+      core_compilers:
+      - gcc@8.5.0
